@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next"
+import Link from "next/link"
 
 interface Data {
   data: any
@@ -10,7 +11,11 @@ export default function Pokes({ data }: Data) {
       <h1>POKES</h1>
       <ul>
         {data.results.map((poke: any) => (
-          <li key={poke.name}>{poke.name}</li>
+          <li key={poke.name}>
+            <Link href={`/pokes/${poke.name}`}>
+              {poke.name}
+            </Link>
+          </li>
         ))}
       </ul>
     </>
